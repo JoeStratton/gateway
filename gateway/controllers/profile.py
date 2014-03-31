@@ -9,7 +9,7 @@ more likely it will be removed
 from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-# from controllers.forms import bio_form, education_form, work_form
+from controllers.profile import Profile
 
 
 @login_required
@@ -55,6 +55,26 @@ def profile_view(request):
         }
     ]
 
+    prof = [
+        {
+            "id": "bio",
+            "title": "Help",
+            "content": "test help"
+        }
+
+        {
+            "id": "interests",
+            "title": "Help",
+            "content": "test help"
+        }
+
+        {
+            "id": "goals",
+            "title": "Help",
+            "content": "test help"
+        }
+
+    ]
     modal = [
         {
             "id": "modal-username",
@@ -85,5 +105,6 @@ def profile_view(request):
         dict(
             subnav=subnav,
             modal=modal
+            prof=prof
         )
     )

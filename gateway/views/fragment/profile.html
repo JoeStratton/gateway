@@ -63,7 +63,8 @@
             <!-- Bio tab -->
             <div class="tab-pane fade in active" id="bio">
                 <div class="col-md-12 cont-border top1-inv wide5">
-                    {% include "bootstrap/textarea.html" with id="bio" rows=2 label="About Me:" placeholder="This is my bio..." %}
+                    <!--{% include "bootstrap/textarea.html" with id="bio" rows=2 label="About Me:" placeholder="This is my bio..." %}-->
+                    {{ venture.description }}
                     {% include "bootstrap/textarea.html" with id="interests" rows=2 label="Interests:" placeholder="These are my interests..." %}
                     {% include "bootstrap/textarea.html" with id="goals" rows=2 label="Goals:" placeholder="These are my goals..." %}
                     <hr>
