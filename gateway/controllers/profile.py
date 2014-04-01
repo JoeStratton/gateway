@@ -60,20 +60,17 @@ def profile_view(request):
             "id": "bio",
             "title": "Help",
             "content": "test help"
-        }
-
+        },
         {
             "id": "interests",
             "title": "Help",
             "content": "test help"
-        }
-
+        },
         {
             "id": "goals",
             "title": "Help",
             "content": "test help"
         }
-
     ]
     modal = [
         {
