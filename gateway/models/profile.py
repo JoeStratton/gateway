@@ -11,17 +11,20 @@ class Profile(models.Model):
 
     bio = models.CharField(
         "This is my bio...",
-        max_length=140
+        max_length=140,
+        blank=True
     )
 
     interests = models.CharField(
         "These are my interests...",
-        max_length=140
+        max_length=140,
+        blank=True
     )
 
     goals = models.CharField(
         "These are my goals...",
-        max_length=140
+        max_length=140,
+        blank=True
     )
 
     class Meta:

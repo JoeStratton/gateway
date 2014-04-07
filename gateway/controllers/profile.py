@@ -9,12 +9,38 @@ more likely it will be removed
 from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from controllers.profile import Profile
+from django import forms
+from gateway.models.profile import Profile
+
+
+class BioForm(forms.Form):
+
+    bio = forms.CharField(
+        max_length=140
+    )
+
+    interests = forms.CharField(
+        max_length=140
+    )
+
+    goals = forms.CharField(
+        max_length=140
+    )
+
+    class Meta:
+        model = Profile
 
 
 @login_required
 def profile_view(request):
     """populate profile information."""
+    bio = "cool"
+    if request.method == 'POST':
+        form = BioForm(request.POST)
+        if form.is_valid():
+            bio = form.cleaned_data['bio']
+            print bio
+
     subnav = [
         {
             "id": "tabi-profile",
@@ -58,17 +84,18 @@ def profile_view(request):
     prof = [
         {
             "id": "bio",
-            "title": "Help",
-            "content": "test help"
+            "title": "Bio",
+            "input": True,
+
         },
         {
             "id": "interests",
-            "title": "Help",
+            "title": "Interests",
             "content": "test help"
         },
         {
             "id": "goals",
-            "title": "Help",
+            "title": "Goals",
             "content": "test help"
         }
     ]
@@ -96,12 +123,16 @@ def profile_view(request):
         }
     ]
 
+    form = BioForm()
+
     return render(
         request,
         'student.html',
         dict(
             subnav=subnav,
-            modal=modal
-            prof=prof
+            modal=modal,
+            prof=prof,
+            form=form,
+            bio=bio
         )
     )

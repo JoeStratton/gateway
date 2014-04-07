@@ -4,7 +4,7 @@
 
 <!-- Left Side - Information/Image -->
 <section class="col-md-8 pull-left">
-    
+
     <!-- Profile Picture -->
     <div class="pull-left cont-border col-md-4 text-center sml of-left">
         <a class="no-line" href="javascript:void(0);"><p class="add-img">Add an image...</p></a>
@@ -19,19 +19,20 @@
 
             <!-- User is able to change these -->
             <ul class="list-group">
-                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal-username">Username: 
+                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal-username">Username:
                     <span class="line-input of-usr">{{ user.username }}</span>
                 </a>
-                
-                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal-password">Password: 
+
+
+                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal-password">Password:
                     <span class="line-input of-pwd">**********</span>
                 </a>
-                
-                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal-email">Email: 
+
+                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal-email">Email:
                     <span class="line-input of-med">{{ user.email }}</span>
                 </a>
-                
-                <p class="list-group-item">Permissions: 
+
+                <p class="list-group-item">Permissions:
                     <span class="line-input of-lil">{% if user.is_staff %}Admin{% else %}User{% endif %}</span>
                 </p>
             </ul>
@@ -59,57 +60,58 @@
 
         <!-- Content of each details tab -->
         <div class="tab-content">
-
-            <!-- Bio tab -->
-            <div class="tab-pane fade in active" id="bio">
-                <div class="col-md-12 cont-border top1-inv wide5">
-                    <!--{% include "bootstrap/textarea.html" with id="bio" rows=2 label="About Me:" placeholder="This is my bio..." %}-->
-                    {{ venture.description }}
-                    {% include "bootstrap/textarea.html" with id="interests" rows=2 label="Interests:" placeholder="These are my interests..." %}
-                    {% include "bootstrap/textarea.html" with id="goals" rows=2 label="Goals:" placeholder="These are my goals..." %}
-                    <hr>
-                    <button type="submit" class="btn btn-default btn-sbm pull-right top7-inv">Save</button>
+            <form role="form" method="post">
+                {% csrf_token %}
+                <!-- Bio tab -->
+                <div class="tab-pane fade in active" id="bio">
+                    <div class="col-md-12 cont-border top1-inv wide5">
+                       <label for="bio">Your Bio Here:</label>
+                            {{ form }}  <!--djagno widget tweaks-->
+                            {{ bio }}
+                        <hr>
+                        <button type="submit" class="btn btn-default btn-sbm pull-right top7-inv" value="submit">Save</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Education tab -->
-            <div class="tab-pane fade" id="education">
-                <div class="col-md-12 cont-border top1-inv wide5">
-                    <!-- To bring back forms for adding another school/degree -->
-                    <a class="pull-right no-line" href="javascript:void(0);"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Education</a><br>
-                    {% include "bootstrap/textarea.html" with id="school" rows=1 label="School Name:" placeholder="This is the name of my school..." %}
-                    {% include "bootstrap/textarea.html" with id="major" rows=1 label="Field of Study:" placeholder="This is the name of my major..." %}
-                    {% include "bootstrap/textarea.html" with id="degree" rows=1 label="Degree:" placeholder="This is the type of degree I have..." %}
-                    {% include "bootstrap/textarea.html" with id="edudesc" rows=2 label="Description:" placeholder="This is a description about this school/degree..." %}
-                    <hr>
-                    <button type="submit" class="btn btn-default btn-sbm pull-right top7-inv">Save</button>
+                <!-- Education tab -->
+                <div class="tab-pane fade" id="education">
+                    <div class="col-md-12 cont-border top1-inv wide5">
+                        <!-- To bring back forms for adding another school/degree -->
+                        <a class="pull-right no-line" href="javascript:void(0);"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Education</a><br>
+                        {% include "bootstrap/textarea.html" with id="school" rows=1 label="School Name:" placeholder="This is the name of my school..." %}
+                        {% include "bootstrap/textarea.html" with id="major" rows=1 label="Field of Study:" placeholder="This is the name of my major..." %}
+                        {% include "bootstrap/textarea.html" with id="degree" rows=1 label="Degree:" placeholder="This is the type of degree I have..." %}
+                        {% include "bootstrap/textarea.html" with id="edudesc" rows=2 label="Description:" placeholder="This is a description about this school/degree..." %}
+                        <hr>
+                        <button type="submit" class="btn btn-default btn-sbm pull-right top7-inv">Save</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Work tab -->
-            <div class="tab-pane fade" id="work">
-                <div class="col-md-12 cont-border top1-inv wide5">
-                    <!-- To bring back forms for adding another school/degree -->
-                    <a class="pull-right no-line" href="javascript:void(0);"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Work Experience</a><br>
-                    {% include "bootstrap/textarea.html" with id="company" rows=1 label="Company Name:" placeholder="This is the name of my work..." %}
-                    {% include "bootstrap/textarea.html" with id="comtitle" rows=1 label="Title:" placeholder="This is the name of my work position..." %}
-                    <div class="form-group">
-                        <label for="timeperiod">Work Time Period:</label><br>
-                        {% include "bootstrap/dd-month.html" %}
-                        <p class="col-xs-1 left19-inv top7">to</p>
-                        {% include "bootstrap/dd-month.html" %}<br>
-                        <div class="checkbox pull-right">
-                            <label>
-                                <input type="checkbox"> Currently Working Here
-                            </label>
+                <!-- Work tab -->
+                <div class="tab-pane fade" id="work">
+                    <div class="col-md-12 cont-border top1-inv wide5">
+                        <!-- To bring back forms for adding another school/degree -->
+                        <a class="pull-right no-line" href="javascript:void(0);"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Work Experience</a><br>
+                        {% include "bootstrap/textarea.html" with id="company" rows=1 label="Company Name:" placeholder="This is the name of my work..." %}
+                        {% include "bootstrap/textarea.html" with id="comtitle" rows=1 label="Title:" placeholder="This is the name of my work position..." %}
+                        <div class="form-group">
+                            <label for="timeperiod">Work Time Period:</label><br>
+                            {% include "bootstrap/dd-month.html" %}
+                            <p class="col-xs-1 left19-inv top7">to</p>
+                            {% include "bootstrap/dd-month.html" %}<br>
+                            <div class="checkbox pull-right">
+                                <label>
+                                    <input type="checkbox"> Currently Working Here
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        {% include "bootstrap/textarea.html" with id="workdesc" rows=2 label="Description:" placeholder="This is a description about this job..." %}
+                        <hr>
+                        <button type="submit" class="btn btn-default btn-sbm pull-right top7-inv">Save</button>
                         </div>
                     </div>
-                    <br>
-                    {% include "bootstrap/textarea.html" with id="workdesc" rows=2 label="Description:" placeholder="This is a description about this job..." %}
-                    <hr>
-                    <button type="submit" class="btn btn-default btn-sbm pull-right top7-inv">Save</button>
-                </div>
-            </div>
+                </form>
         </div>
     </div>
 </section>
