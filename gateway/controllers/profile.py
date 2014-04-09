@@ -27,6 +27,34 @@ class BioForm(forms.Form):
         max_length=140
     )
 
+    school = models.CharField(
+        max_length=140
+    )
+
+    major = models.CharField(
+        max_length=140
+    )
+
+    degree = models.CharField(
+        max_length=140
+    )
+
+    edudesc = models.CharField(
+        max_length=140
+    )
+
+    company = models.CharField(
+        max_length=140
+    )
+
+    comtitle = models.CharField(
+        max_length=140
+    )
+
+    workdesc = models.CharField(
+        max_length=140
+    )
+
     class Meta:
         model = Profile
 
