@@ -27,31 +27,31 @@ class BioForm(forms.Form):
         max_length=140
     )
 
-    school = models.CharField(
+    school = forms.CharField(
         max_length=140
     )
 
-    major = models.CharField(
+    major = forms.CharField(
         max_length=140
     )
 
-    degree = models.CharField(
+    degree = forms.CharField(
         max_length=140
     )
 
-    edudesc = models.CharField(
+    edudesc = forms.CharField(
         max_length=140
     )
 
-    company = models.CharField(
+    company = forms.CharField(
         max_length=140
     )
 
-    comtitle = models.CharField(
+    comtitle = forms.CharField(
         max_length=140
     )
 
-    workdesc = models.CharField(
+    workdesc = forms.CharField(
         max_length=140
     )
 
