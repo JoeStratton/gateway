@@ -76,14 +76,22 @@ var gameWidth;
 function initGame() {
 
     // Global config
-    canvasIDList = ['startCanvas', 'ahaCanvas', 'gapCanvas', 'survCanvas', 'interCanvas', 'elevCanvas', 'endCanvas'];
+    canvasIDList = [
+        'startCanvas',
+        'ahaCanvas',
+        'gapCanvas',
+        'survCanvas',
+        'interCanvas',
+        'elevCanvas',
+        'endCanvas'
+    ];
 
     // Canvas config
-    canvasID = getCanvasId();
-    canvas = document.getElementById(canvasID);
-    canvas.width = 1400;
+    canvasID      = getCanvasId();
+    canvas        = document.getElementById(canvasID);
+    canvas.width  = 1400;
     canvas.height = 650;
-    stage = new createjs.Stage(canvas);
+    stage         = new createjs.Stage(canvas);
 
     // Set game attributes
     createjs.Ticker.setFPS(60);
@@ -97,7 +105,7 @@ function initGame() {
 
 function initLoadProgress() {
 
-    progressText = new createjs.Text("", "20px Arial", "#000000");
+    progressText   = new createjs.Text("", "20px Arial", "#000000");
     progressText.x = 300 - progressText.getMeasuredWidth() / 2;
     progressText.y = 20;
     stage.addChild(progressText);
@@ -134,19 +142,19 @@ function createPlayer() {
         images: ["/static/sprites/Sprite_Sheet.png"],
         frames: {width: 100, height: 200, regX: 0, regY: 0},
         animations: {
-            right1: {frames: [1], next: "right2", speed: 2},
-            right2: {frames: [2], next: "right1", speed: 2},
-            left1: {frames: [3], next: "left2", speed: 2},
-            left2: {frames: [4], next: "left1", speed: 2},
-            down1: {frames: [6], next: "down2", speed: 2},
-            down2: {frames: [7], next: "down1", speed: 2}
+            walkRight1: {frames: [1, 2], next: "lookRight", speed: 2},
+            lookRight : {frames: [2], speed: 2},
+            walkLeft  : {frames: [3, 4], next: "lookLeft", speed: 2},
+            lookLeft  : {frames: [4], speed: 2},
+            walkDown  : {frames: [6, 7], next: "lookDown", speed: 2},
+            lookDown  : {frames: [7], speed: 2}
         }
     });
 
     // Set our user image and location to the global variable
-    userPlayer = new createjs.Sprite(spriteData, config.pos);
-    userPlayer.x = config.xloc;
-    userPlayer.y = config.yloc;
+    userPlayer        = new createjs.Sprite(spriteData, config.pos);
+    userPlayer.x      = config.xloc;
+    userPlayer.y      = config.yloc;
     userPlayer.scaleX = config.scaleX;
     userPlayer.scaleY = config.scaleY;
 

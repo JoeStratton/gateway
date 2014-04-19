@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-read -p "Please remember that for ease of use, it is best to make the root password root, this will save you a lot of headache. 
-Also keep in mind that curently this script only supports Debian, Fedora and Arch based Distros. 
+read -p "Please remember that for ease of use, it is best to make the root password root, this will save you a lot of headache.
+Also keep in mind that curently this script only supports Debian, Fedora and Arch based Distros.
 Press any key to continue..."
 
 DISTRO=$(awk '/DISTRIB_ID=/' /etc/lsb-release | sed 's/DISTRIB_ID=//' | tr '[:upper:]' '[:lower:]')
@@ -14,7 +14,7 @@ read -p "Is the above correct? If so press any key to continue, otherwise please
 if [[ "$DISTRO" = "ubuntu" || "$DISTRO" = "debian" ]]
 then
 	#install required debian packages
-	cat aptitude.txt | xargs sudo apt-get install --yes 
+	cat aptitude.txt | xargs sudo apt-get install --yes
 
 	#install required python packages
 	sudo pip install -r requirements.txt
@@ -22,7 +22,7 @@ then
 
 
 elif [[ "$DISTRO" = "fedora" || "$DISTRO" = "red hat" ]]
-then 
+then
 	#install yum packages
 	cat yum.txt | xargs sudo yum install
 
@@ -33,7 +33,7 @@ then
 elif [[ "$DISTRO" = "arch linux" || "$DISTRO" = "manjaro" ]]
 then
     #install reqs in yaourt
-	cat yaourt.txt | xargs yaourt 
+	cat yaourt.txt | xargs yaourt
 	echo 2
 	echo 4
 	echo 1
@@ -42,7 +42,7 @@ then
 	echo 4
 	echo 1
 
- 
+
 fi
 
 
@@ -53,4 +53,4 @@ echo "create database gateway" | mysql --user=root --password=root
 cd ..
 python manage.py syncdb --noinput
 
-sudo npm install --dev
+sudo npm install
