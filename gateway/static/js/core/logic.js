@@ -74,10 +74,10 @@ function move (direction) {
         case 37:
             // Ugly way to handle sprite animation :(
             if (moving === false) {
-                userPlayer.gotoAndPlay("left1");
+                userPlayer.gotoAndPlay("walkLeft");
                 moving = true;
             } else {
-                userPlayer.gotoAndPlay("left2");
+                userPlayer.gotoAndPlay("walkLeft");
                 moving = false;
             }
 
@@ -193,10 +193,10 @@ function move (direction) {
         case 39:
             // Ugly way to handle sprite animation :(
             if (moving === false) {
-                userPlayer.gotoAndPlay("right1");
+                userPlayer.gotoAndPlay("walkRight");
                 moving = true;
             } else {
-                userPlayer.gotoAndPlay("right2");
+                userPlayer.gotoAndPlay("walkRight");
                 moving = false;
             }
 

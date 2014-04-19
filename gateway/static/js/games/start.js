@@ -36,7 +36,7 @@ function loadGameConfig() {
 
 function getStartingPlayerConfig() {
     return {
-        'pos': 'left1',
+        'pos': 'walkLeft',
         'xloc': 1200,
         'yloc': 340,
         'scaleX': 1,

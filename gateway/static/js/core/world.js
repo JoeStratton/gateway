@@ -142,7 +142,7 @@ function createPlayer() {
         images: ["/static/sprites/Sprite_Sheet.png"],
         frames: {width: 100, height: 200, regX: 0, regY: 0},
         animations: {
-            walkRight1: {frames: [1, 2], next: "lookRight", speed: 2},
+            walkwalkRight: {frames: [1, 2], next: "lookRight", speed: 2},
             lookRight : {frames: [2], speed: 2},
             walkLeft  : {frames: [3, 4], next: "lookLeft", speed: 2},
             lookLeft  : {frames: [4], speed: 2},
