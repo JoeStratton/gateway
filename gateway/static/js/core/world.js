@@ -153,8 +153,8 @@ function createPlayer() {
 
     // Set our user image and location to the global variable
     userPlayer        = new createjs.Sprite(spriteData, config.pos);
-    userPlayer.x      = config.xloc;
-    userPlayer.y      = config.yloc;
+    gamestate.position.x      = config.xloc;
+    gamestate.position.y      = config.yloc;
     userPlayer.scaleX = config.scaleX;
     userPlayer.scaleY = config.scaleY;
 

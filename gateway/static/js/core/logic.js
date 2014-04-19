@@ -65,8 +65,8 @@ var moving = false;
 
 function move (direction) {
 
-    console.log("X Pos:" + userPlayer.x);
-    console.log("Y Pos:" + userPlayer.y);
+    console.log("X Pos:" + gamestate.position.x);
+    console.log("Y Pos:" + gamestate.position.y);
 
     switch (direction) {
 
@@ -84,47 +84,47 @@ function move (direction) {
             switch (canvasID) {
                 // Start
                 case canvasIDList[0]:
-                    if (userPlayer.x > 600 && userPlayer.x < 710 && userPlayer.y > 70) {     // Stay within vertical sidewalk
-                        userPlayer.x -= 10;
-                    } else if (userPlayer.x > -10 && userPlayer.y > 290) {    // Stay within horizontal sidewalk
-                        userPlayer.x -= 10;
+                    if (gamestate.position.x > 600 && gamestate.position.x < 710 && gamestate.position.y > 70) {     // Stay within vertical sidewalk
+                        gamestate.position.x -= 10;
+                    } else if (gamestate.position.x > -10 && gamestate.position.y > 290) {    // Stay within horizontal sidewalk
+                        gamestate.position.x -= 10;
                     }
                     break;
 
                 // Aha
                 case canvasIDList[1]:
-                    userPlayer.x -= 10;
+                    gamestate.position.x -= 10;
                     break;
 
                 // Gap
                 case canvasIDList[2]:
-                    if ((userPlayer.x > 0.375 * gameWidth) && (userPlayer.y < 0.07 * gameHeight)) {     // Plant
-                        userPlayer.x -= 0.01 * gameWidth;
-                    } else if ((userPlayer.x > 0.05 * gameWidth) && (userPlayer.y < 0.35 * gameHeight) && (userPlayer.y > 0.07 * gameHeight)) {
-                        userPlayer.x -= 0.01 * gameWidth;
-                    } else if ((userPlayer.x > 0.42 * gameWidth) && (userPlayer.y > 0.31 * gameHeight)) {   // Hallway
-                        userPlayer.x -= 0.01 * gameWidth;
+                    if ((gamestate.position.x > 0.375 * gameWidth) && (gamestate.position.y < 0.07 * gameHeight)) {     // Plant
+                        gamestate.position.x -= 0.01 * gameWidth;
+                    } else if ((gamestate.position.x > 0.05 * gameWidth) && (gamestate.position.y < 0.35 * gameHeight) && (gamestate.position.y > 0.07 * gameHeight)) {
+                        gamestate.position.x -= 0.01 * gameWidth;
+                    } else if ((gamestate.position.x > 0.42 * gameWidth) && (gamestate.position.y > 0.31 * gameHeight)) {   // Hallway
+                        gamestate.position.x -= 0.01 * gameWidth;
                     }
                     break;
 
                 // Surv
                 case canvasIDList[3]:
-                    userPlayer.x -= 10;
+                    gamestate.position.x -= 10;
                     break;
 
                 // Inter
                 case canvasIDList[4]:
-                    userPlayer.x -= 10;
+                    gamestate.position.x -= 10;
                     break;
 
                 // Elev
                 case canvasIDList[5]:
-                    userPlayer.x -= 10;
+                    gamestate.position.x -= 10;
                     break;
 
                 // End
                 case canvasIDList[6]:
-                    userPlayer.x -= 10;
+                    gamestate.position.x -= 10;
                     break;
             }
             break;
@@ -144,47 +144,47 @@ function move (direction) {
             switch (canvasID) {
                 // Start
                 case canvasIDList[0]:
-                    if (userPlayer.y > 300 || (userPlayer.x > 590 && userPlayer.x < 710 && userPlayer.y > 80)) {
-                        userPlayer.y -= 10;
+                    if (gamestate.position.y > 300 || (gamestate.position.x > 590 && gamestate.position.x < 710 && gamestate.position.y > 80)) {
+                        gamestate.position.y -= 10;
                     }
                     break;
 
                 // Aha
                 case canvasIDList[1]:
-                    userPlayer.y -= 10;
+                    gamestate.position.y -= 10;
                     break;
 
                 // Gap
                 case canvasIDList[2]:
-                    if ((userPlayer.y > 0.05 * gameHeight) && (userPlayer.x < 0.2 * gameWidth)) {
-                        userPlayer.y -= 0.02 * gameHeight;
-                    } else if ((userPlayer.y > 0.07 * gameHeight) && (userPlayer.x > 0.2 * gameWidth) && (userPlayer.x < 0.375 * gameWidth)) {  // Plant
-                        userPlayer.y -= 0.02 * gameHeight;
-                    } else if ((userPlayer.y > 0.05 * gameHeight) && (userPlayer.x > 0.375 * gameWidth) && (userPlayer.x < 0.55 * gameWidth)) {
-                        userPlayer.y -= 0.02 * gameHeight;
-                    } else if ((userPlayer.y > 0.1 * gameHeight) && (userPlayer.x > 0.55 * gameWidth)) {    // Chairs
-                        userPlayer.y -= 0.02 * gameHeight;
+                    if ((gamestate.position.y > 0.05 * gameHeight) && (gamestate.position.x < 0.2 * gameWidth)) {
+                        gamestate.position.y -= 0.02 * gameHeight;
+                    } else if ((gamestate.position.y > 0.07 * gameHeight) && (gamestate.position.x > 0.2 * gameWidth) && (gamestate.position.x < 0.375 * gameWidth)) {  // Plant
+                        gamestate.position.y -= 0.02 * gameHeight;
+                    } else if ((gamestate.position.y > 0.05 * gameHeight) && (gamestate.position.x > 0.375 * gameWidth) && (gamestate.position.x < 0.55 * gameWidth)) {
+                        gamestate.position.y -= 0.02 * gameHeight;
+                    } else if ((gamestate.position.y > 0.1 * gameHeight) && (gamestate.position.x > 0.55 * gameWidth)) {    // Chairs
+                        gamestate.position.y -= 0.02 * gameHeight;
                     }
                     break;
 
                 // Surv
                 case canvasIDList[3]:
-                    userPlayer.y -= 10;
+                    gamestate.position.y -= 10;
                     break;
 
                 // Inter
                 case canvasIDList[4]:
-                    userPlayer.y -= 10;
+                    gamestate.position.y -= 10;
                     break;
 
                 // Elev
                 case canvasIDList[5]:
-                    userPlayer.y -= 10;
+                    gamestate.position.y -= 10;
                     break;
 
                 // End
                 case canvasIDList[6]:
-                    userPlayer.y -= 10;
+                    gamestate.position.y -= 10;
                     break;
             }
             break;
@@ -203,49 +203,49 @@ function move (direction) {
             switch (canvasID) {
                 // Start
                 case canvasIDList[0]:
-                    if (userPlayer.x > 580 && userPlayer.x < 700 && userPlayer.y > 70) {   // Stay within vertical sidewalk
-                        userPlayer.x += 10;
-                    } else if (userPlayer.x < 1310 && userPlayer.y > 290) {    // Stay within horizontal sidewalk
-                        userPlayer.x += 10;
+                    if (gamestate.position.x > 580 && gamestate.position.x < 700 && gamestate.position.y > 70) {   // Stay within vertical sidewalk
+                        gamestate.position.x += 10;
+                    } else if (gamestate.position.x < 1310 && gamestate.position.y > 290) {    // Stay within horizontal sidewalk
+                        gamestate.position.x += 10;
                     }
                     break;
 
                 // Aha
                 case canvasIDList[1]:
-                    userPlayer.x += 10;
+                    gamestate.position.x += 10;
                     break;
 
                 // Gap
                 case canvasIDList[2]:
-                    if ((userPlayer.x < 0.2 * gameWidth) && (userPlayer.y < 0.07 * gameHeight)) {   // Plant
-                        userPlayer.x += 0.01 * gameWidth;
-                    } else if ((userPlayer.x < 0.55 * gameWidth) && (userPlayer.y < 0.1)) {
-                        userPlayer.x += 0.01 * gameWidth;
-                    } else if ((userPlayer.x < 0.515 * gameWidth) && (userPlayer.y > 0.31 * gameHeight)) {
-                        userPlayer.x += 0.01 * gameWidth;
-                    } else if ((userPlayer.x < 0.9 * gameWidth) && (userPlayer.y > 0.1 * gameHeight)) {
-                        userPlayer.x += 0.01 * gameWidth;
+                    if ((gamestate.position.x < 0.2 * gameWidth) && (gamestate.position.y < 0.07 * gameHeight)) {   // Plant
+                        gamestate.position.x += 0.01 * gameWidth;
+                    } else if ((gamestate.position.x < 0.55 * gameWidth) && (gamestate.position.y < 0.1)) {
+                        gamestate.position.x += 0.01 * gameWidth;
+                    } else if ((gamestate.position.x < 0.515 * gameWidth) && (gamestate.position.y > 0.31 * gameHeight)) {
+                        gamestate.position.x += 0.01 * gameWidth;
+                    } else if ((gamestate.position.x < 0.9 * gameWidth) && (gamestate.position.y > 0.1 * gameHeight)) {
+                        gamestate.position.x += 0.01 * gameWidth;
                     }
                     break;
 
                 // Surv
                 case canvasIDList[3]:
-                    userPlayer.x += 10;
+                    gamestate.position.x += 10;
                     break;
 
                 // Inter
                 case canvasIDList[4]:
-                    userPlayer.x += 10;
+                    gamestate.position.x += 10;
                     break;
 
                 // Elev
                 case canvasIDList[5]:
-                    userPlayer.x += 10;
+                    gamestate.position.x += 10;
                     break;
 
                 // End
                 case canvasIDList[6]:
-                    userPlayer.x += 10;
+                    gamestate.position.x += 10;
                     break;
             }
             break;
@@ -264,45 +264,45 @@ function move (direction) {
             switch (canvasID) {
                 // Start
                 case canvasIDList[0]:
-                    if (userPlayer.y < 370) {
-                        userPlayer.y += 10;
+                    if (gamestate.position.y < 370) {
+                        gamestate.position.y += 10;
                     }
                     break;
 
                 // Aha
                 case canvasIDList[1]:
-                    userPlayer.y += 10;
+                    gamestate.position.y += 10;
                     break;
 
                 // Gap
                 case canvasIDList[2]:
-                    if ((userPlayer.y < 0.31 * gameHeight) && (userPlayer.x < 0.42 * gameWidth)) {
-                        userPlayer.y += 0.02 * gameHeight;
-                    } else if ((userPlayer.y < gameHeight) && (userPlayer.x > 0.42 * gameWidth) && (userPlayer.x < 0.515 * gameWidth)) {  // Hallway
-                        userPlayer.y += 0.02 * gameHeight;
-                    } else if ((userPlayer.y < 0.31 * gameHeight) && (userPlayer.x > 0.515 * gameWidth)) {
-                        userPlayer.y += 0.02 * gameHeight;
+                    if ((gamestate.position.y < 0.31 * gameHeight) && (gamestate.position.x < 0.42 * gameWidth)) {
+                        gamestate.position.y += 0.02 * gameHeight;
+                    } else if ((gamestate.position.y < gameHeight) && (gamestate.position.x > 0.42 * gameWidth) && (gamestate.position.x < 0.515 * gameWidth)) {  // Hallway
+                        gamestate.position.y += 0.02 * gameHeight;
+                    } else if ((gamestate.position.y < 0.31 * gameHeight) && (gamestate.position.x > 0.515 * gameWidth)) {
+                        gamestate.position.y += 0.02 * gameHeight;
                     }
                     break;
 
                 // Surv
                 case canvasIDList[3]:
-                    userPlayer.y += 10;
+                    gamestate.position.y += 10;
                     break;
 
                 // Inter
                 case canvasIDList[4]:
-                    userPlayer.y += 10;
+                    gamestate.position.y += 10;
                     break;
 
                 // Elev
                 case canvasIDList[5]:
-                    userPlayer.y += 10;
+                    gamestate.position.y += 10;
                     break;
 
                 // End
                 case canvasIDList[6]:
-                    userPlayer.y += 10;
+                    gamestate.position.y += 10;
                     break;
             }
             break;
