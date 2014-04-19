@@ -96,6 +96,8 @@ DATABASES = {
     }
 }
 
+AUTH_PROFILE_MODULE = 'gateway.Profile'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -132,3 +134,5 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'registration@gatewaygame.com'
 EMAIL_HOST_PASSWORD = 'TeamHEntrepreneurship'
 DEFAULT_FROM_EMAIL = 'registration@gatewaygame.com'
+
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
