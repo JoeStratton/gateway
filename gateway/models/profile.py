@@ -4,7 +4,9 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 
-class Profile(models.Model):
+class UserProfile(models.Model):
+
+    user = models.ForeignKey(User, unique=True)
 
     """store profile information."""
     '''user = models.ForeignKey(User, unique=True)'''
@@ -71,3 +73,6 @@ class Profile(models.Model):
 
     class Meta:
         app_label = 'gateway'
+
+    def __unicode__(self):
+        return u'Profile of user: %s' % self.user.username

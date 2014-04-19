@@ -1,8 +1,8 @@
 from configuration import settings
 from venture import Venture
-from profile import Profile
+from profile import UserProfile
 
 __all__ = [
     "Venture",
-    "Profile"
+    "UserProfile"
 ]

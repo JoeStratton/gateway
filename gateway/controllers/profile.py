@@ -10,7 +10,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django import forms
-from gateway.models.profile import Profile
+from gateway.models.profile import UserProfile
 
 
 class BioForm(forms.Form):
@@ -56,17 +56,18 @@ class BioForm(forms.Form):
     )
 
     class Meta:
-        model = Profile
+        model = UserProfile
 
 
 @login_required
 def profile_view(request):
     """populate profile information."""
-    bio = "cool"
+    bio = 'fjsdkljflsdjflsdjfkljsdklfjsdlkfjsdkljfklsdjfkljsdklfjslkdfj'
     if request.method == 'POST':
         form = BioForm(request.POST)
         if form.is_valid():
             bio = form.cleaned_data['bio']
+            user = request.user.id
             print bio
 
     subnav = [
@@ -113,7 +114,7 @@ def profile_view(request):
         {
             "id": "bio",
             "title": "Bio",
-            "input": True,
+            "input": True
 
         },
         {
