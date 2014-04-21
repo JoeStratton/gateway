@@ -17,6 +17,8 @@ $(document).ready(function() {
 
     // Setup our function for user input (key)
     document.onkeydown = handleKeyDown;
+    //document.onmousedown = handleMouseDown;
+
     createjs.Ticker.addEventListener("tick", stage);
 });
 
@@ -32,6 +34,16 @@ function handleKeyDown(e) {
     // Send the key code off to make the user move
     move(e.keyCode);
 }
+
+
+function handleMouseDown(e) {
+
+    // If e is defined, use it. Else use the event
+    e = e || window.event;
+    // Send the key code off to make the user move
+    findLoc(e.keyCode);
+}
+
 
 /**
  * When timer is triggered

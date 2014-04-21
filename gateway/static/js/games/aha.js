@@ -36,10 +36,10 @@ function loadGameConfig() {
 
 function getStartingPlayerConfig() {
     return {
-        'pos': 'left1',
-        'xloc': 300,
-        'yloc': 700,
-        'scaleX': 0.7,
-        'scaleY': 0.55
+        'pos': 'down1',
+        'xloc': 710,
+        'yloc': 390,
+        'scaleX': 1,
+        'scaleY': 1
     };
 }
