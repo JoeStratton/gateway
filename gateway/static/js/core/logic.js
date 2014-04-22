@@ -60,7 +60,7 @@ var gamestate = {
     }
 };
 
-var db = new PouchDB('dbname');
+//var db = new PouchDB('dbname');
 
 db.put(gamestate);
 
