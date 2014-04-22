@@ -72,8 +72,19 @@ var gameHeight;
  */
 var gameWidth;
 
-
+/**
+ * This is the "Click to Start" text found on all games
+ * @property canvasIDs
+ * @type {createjs.Text}
+ */
 var startText;
+
+/**
+ * This is the global state of the game movement
+ * @property canvasIDs
+ * @type {boolean}
+ */
+var goToNextGame = false;
 
 
 function initGame() {
@@ -169,4 +180,12 @@ function beginText(xpos,ypos,state) {
     startText.x = xpos;
     startText.y = ypos;
     stage.addChild(startText);
+}
+
+/**
+ * Handles what happens once the game is started
+ * (The user clicking start game)
+ */
+function switchGame(loc) {
+    window.location = window.location.protocol + "//" + window.location.host + "/" + "minigame/" + loc;
 }

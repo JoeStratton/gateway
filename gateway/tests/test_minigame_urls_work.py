@@ -4,6 +4,7 @@ Tests the minigame pages are loading.
 Creates a headless browser to load the page
 and test for a http 200 (Okay) status code
 """
+
 import unittest
 from django.test import Client
 

@@ -6,6 +6,8 @@ creates a test user and logs test user in
 then attempts to load pages
 """
 import unittest
+from gateway.tests.sample import aha, survey, elevator
+from gateway.tests.sample import interest, gap
 from django.contrib.auth.models import User
 from gateway.models.venture import Venture
 from django.test import Client
@@ -51,7 +53,12 @@ class TestUrlsWork(unittest.TestCase):
             progress=90,
             step="1",
             hook="Bringing the comfort and quality of Traditional\
-                Irish coats to an Online International Exchange"
+                Irish coats to an Online International Exchange",
+            aha=aha,
+            gap=gap,
+            interest=interest,
+            survey=survey,
+            elevator=elevator
         )
         v.save()
         response = self.client.get('/')

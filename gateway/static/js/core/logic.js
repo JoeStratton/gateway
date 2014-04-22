@@ -60,6 +60,20 @@ var gamestate = {
     }
 };
 
+var db = new PouchDB('dbname');
+
+db.put(gamestate);
+
+db.changes({
+    onChange: function() {
+        console.log('Ch-Ch-Changes');
+    }
+});
+
+var venturename = 'test';
+
+db.replicate.to('localhost:9000/database/' + venturename);
+
 
 // For switching between the two animation sprites, ugly method!!!
 var moving = false;
@@ -68,9 +82,6 @@ var noText = true;
 function move (direction) {
 
     beginGame();
-
-    console.log("X Pos:" + userPlayer.x);
-    console.log("Y Pos:" + userPlayer.y);
 
     switch (direction) {
 
@@ -97,9 +108,11 @@ function move (direction) {
 
                 // Aha
                 case canvasIDList[1]:
-                    //if ((userPlayer.x > 490 && userPlayer.y > 190) || (userPlayer.y < 200)) {
+                    if (userPlayer.x > 490 && userPlayer.y > 190) {
                         userPlayer.x -= 10;
-                    //}
+                    } else if (userPlayer.y < 200 && userPlayer.x > 60) {
+                        userPlayer.x -= 10;
+                    }
                     break;
 
                 // Gap
@@ -152,14 +165,22 @@ function move (direction) {
             switch (canvasID) {
                 // Start
                 case canvasIDList[0]:
-                    if (userPlayer.y > 300 || (userPlayer.x > 590 && userPlayer.x < 710 && userPlayer.y > 130 || goToNextGame)) {
+                    if (userPlayer.y > 300) {
+                        userPlayer.y -= 10;
+                    } else if (userPlayer.x > 590 && userPlayer.x < 710 && userPlayer.y > 130 || goToNextGame) {
                         userPlayer.y -= 10;
                     }
                     break;
 
                 // Aha
                 case canvasIDList[1]:
-                    userPlayer.y -= 10;
+                    if (userPlayer.y > -20 && userPlayer.x < 810) {
+                        userPlayer.y -= 10;
+                    } else if (userPlayer.y > 140 && userPlayer.x > 810) {
+                        userPlayer.y -= 10;
+                    } else if (userPlayer.x > 570 && userPlayer.x < 730 && goToNextGame) {
+                        userPlayer.y -= 10;
+                    }
                     break;
 
                 // Gap
@@ -220,9 +241,15 @@ function move (direction) {
 
                 // Aha
                 case canvasIDList[1]:
-                    //if ((userPlayer.x < 810 && userPlayer.y > 190) || (userPlayer.y < 200 & userPlayer.x < 1250) || (userPlayer.y < 120 && userPlayer.x < 800)) {
+                    if (userPlayer.x < 800 && userPlayer.y > 190) {
                         userPlayer.x += 10;
-                    //}
+                    } else if (userPlayer.x < 800 && userPlayer.y < 120) {
+                        userPlayer.x += 10;
+                    } else if (userPlayer.y > 130 && userPlayer.y < 200 && userPlayer.x < 1250) {
+                        userPlayer.x += 10;
+                    } else if (userPlayer.y < 120 && userPlayer.x < 800) {
+                        userPlayer.x += 10;
+                    }
                     break;
 
                 // Gap
@@ -281,7 +308,14 @@ function move (direction) {
 
                 // Aha
                 case canvasIDList[1]:
-                    userPlayer.y += 10;
+                    // First branch does the desk, second does
+                    if (userPlayer.y > 130 && userPlayer.y < 190 && userPlayer.x > 810) {
+                        userPlayer.y += 10;
+                    } else if (userPlayer.x < 490 && userPlayer.y < 190) {
+                        userPlayer.y += 10;
+                    } else if (userPlayer.x > 480 && userPlayer.x < 820 && userPlayer.y < 400) {
+                        userPlayer.y += 10;
+                    }
                     break;
 
                 // Gap
@@ -330,22 +364,26 @@ function beginGame () {
 
         // Start
         case canvasIDList[0]:
-            //if (userPlayer.x >= 640 && userPlayer.x <= 660 && userPlayer.y >= 0 && userPlayer.y <= 20) {
             if (userPlayer.x > 590 && userPlayer.x < 710 && userPlayer.y > 50 && userPlayer.y < 200 && noText) {
-                beginText(790,330);
+                beginText(790, 330);
                 noText = false;
             }
 
-            if (userPlayer.x > 590 && userPlayer.x < 710 && userPlayer.y < 120 && goToNextGame) {
-                switchGame();
-            }
+            if (userPlayer.x > 590 && userPlayer.x < 710 && userPlayer.y < 120 && goToNextGame) switchGame("aha");
 
             break;
-/*
+
         // Aha
         case canvasIDList[1]:
+            if (userPlayer.x > 410 && userPlayer.x < 650 && userPlayer.y < 140 && noText) {
+                beginText(155, 35);
+                noText = false;
+            }
+
+            if (userPlayer.x > 570 && userPlayer.x < 730 && userPlayer.y < -10 && goToNextGame) switchGame("gap");
+
             break;
-*/
+
         // Gap
         case canvasIDList[2]:
             if (userPlayer.x >= 340 && userPlayer.x <= 360 && userPlayer.y >= 0 && userPlayer.y <= 20 && noText) {

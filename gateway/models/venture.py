@@ -1,5 +1,10 @@
 """model venture information."""
 from django.db import models
+from gateway.models.Aha import Aha
+from gateway.models.Elevator import Elevator
+from gateway.models.Gap import Gap
+from gateway.models.Survey import Survey
+from gateway.models.Interest import Interest
 
 
 class Venture(models.Model):
@@ -37,6 +42,32 @@ class Venture(models.Model):
     hook = models.CharField(
         "tweet sized hook line for the venture",
         max_length=140
+    )
+    """Foreign keys for minigame models"""
+    """ForeignKey are set to not constrained due to framework test issues"""
+    aha = models.ForeignKey(
+        Aha,
+        db_constraint=False
+    )
+
+    elevator = models.ForeignKey(
+        Elevator,
+        db_constraint=False
+    )
+
+    gap = models.ForeignKey(
+        Gap,
+        db_constraint=False
+    )
+
+    survey = models.ForeignKey(
+        Survey,
+        db_constraint=False
+    )
+
+    interest = models.ForeignKey(
+        Interest,
+        db_constraint=False
     )
 
     class Meta:
